@@ -12,9 +12,18 @@ public class Ghost : MonoBehaviour {
 	[SerializeField] private float ligthDecreaseSpeed = 0.2f;
 	[SerializeField] private float hideSpeed = 20f;
 	[SerializeField] private float phantomDuration = 2.5f;
-	[SerializeField] private float phantomCooldown = 12f;
+//	[SerializeField] private float phantomCooldown = 12f;
+	[SerializeField] private float trapEnergyUse = 0.45f;
+	[SerializeField] private float phantomEnergyUse = 0.45f;
+	[SerializeField] private float energyRechargeSpeed = 0.1f; //energy pr sec
+	[SerializeField] private float torchActivateRadius = 2.5f;
 
 	[SerializeField] private ParticleSystem phantomingParticles;
+
+	[SerializeField] private GhostTrap trapPrefab;
+
+
+	public float energy;
 
 	public InputData input;
 
@@ -28,6 +37,12 @@ public class Ghost : MonoBehaviour {
 
 	private float phantomEndTime;
 	private float nextPhantomAllowedTime;
+
+	private float currHideFrac;
+
+	private bool justUsedTrap;
+	private bool justUsedPhantom;
+	private bool justUsedActivate;
 
 	private Animator anim { get{ return GetComponent<Animator>(); } }
 
@@ -43,12 +58,21 @@ public class Ghost : MonoBehaviour {
 		if (input.type == InputType.Joystick){
 			if (Input.GetButton("Joy" + input.idx + "A")){
 				Debug.Log("player " + input.idx  + " pressed A!");
-
+				if (!justUsedActivate) {
+					justUsedActivate = true;
+					Activate();
+				}
+			}else{
+				justUsedActivate = false;
 			}
 			if (Input.GetButton("Joy" + input.idx + "X")){
 				Debug.Log("player " + input.idx  + " pressed X!");
-
-				Phantoming();
+				if (!justUsedPhantom) {
+					justUsedPhantom = true;
+					Phantoming();
+				}
+			}else{
+				justUsedPhantom = false;
 			}
 			if (Input.GetButton("Joy" + input.idx + "B")){
 				Debug.Log("player " + input.idx  + " pressed B!");
@@ -57,10 +81,16 @@ public class Ghost : MonoBehaviour {
 			}
 			if (Input.GetButton("Joy" + input.idx + "Y")){
 				Debug.Log("player " + input.idx  + " pressed Y!");
+				if (!justUsedTrap) {
+					justUsedTrap = true;
+					PlaceTrap();
+				}
+			}else{
+				justUsedTrap = false;
 			}
 		}else if (input.type == InputType.Keyboard){
 			if (Input.GetButtonDown("A")){
-
+				Activate();
 			}
 			if (Input.GetButtonDown("X")){
 				Phantoming();
@@ -68,13 +98,25 @@ public class Ghost : MonoBehaviour {
 			if (Input.GetButton("B")){
 				Hiding();
 			}
+			if (Input.GetButtonDown("Y")){
+				PlaceTrap();
+			}
 		}
 
 
+		//Energy recharge
+		if (energy < 1 && !holdingHide){
+			energy = Mathf.Clamp01(energy + energyRechargeSpeed * Time.deltaTime);
+			panel.SetEnergy(energy);
+		}
+
 		//Hiding color
-		var goalClr = holdingHide ? Color.black : defaultFaceEmissionClr;
-		var currClr = faceMat.GetColor("_EmissionColor");
-		faceMat.SetColor("_EmissionColor", Color.Lerp(currClr, goalClr, hideSpeed * Time.deltaTime));
+		var goalHideFrac = holdingHide ? 1 : 0;
+		currHideFrac = Mathf.MoveTowards(currHideFrac, goalHideFrac, hideSpeed * Time.deltaTime);
+//		var goalClr = holdingHide ? Color.black : defaultFaceEmissionClr;
+//		var currClr = faceMat.GetColor("_EmissionColor");
+		faceMat.SetColor("_EmissionColor", Color.Lerp(defaultFaceEmissionClr, Color.black, currHideFrac));
+		panel.SetAlpha(1 - currHideFrac);
 
 		//Phantoming
 		if (Time.time > phantomEndTime){
@@ -100,20 +142,41 @@ public class Ghost : MonoBehaviour {
 		}
 	}
 
+	private void Activate(){
+		var colliders = Physics.OverlapSphere(transform.position + Vector3.up * 1.5f, torchActivateRadius, LayerMask.GetMask("Torches"));
+		foreach (var item in colliders) {
+			var torch = item.GetComponent<TorchLight>();
+			if (torch.turnedOn) torch.SetTurnedOn(false);
+		}
+	}
 
 	private void Hiding(){
 		holdingHide = true;
 	}
 
+	private void PlaceTrap(){
+		if (energy > trapEnergyUse){
+			energy = Mathf.Clamp01(energy - trapEnergyUse);
+			panel.SetEnergy(energy);
+
+			var trap = Instantiate(trapPrefab);
+			trap.transform.position = transform.position; //TODO set y correctly?
+		}
+	}
+
 	private void Phantoming(){
-		if (Time.time > nextPhantomAllowedTime){
-			nextPhantomAllowedTime = Time.time + phantomCooldown;
+		if (energy > phantomEnergyUse){
+//				if (Time.time > nextPhantomAllowedTime){
+//			nextPhantomAllowedTime = Time.time + phantomCooldown;
 
 			phantomEndTime = Time.time + phantomDuration;
 			gameObject.layer = LayerMask.NameToLayer("Phantoms");
 			phantomingParticles.Play();
 
-			panel.UseSkill(0, phantomCooldown);
+//			panel.UseSkill(0, phantomCooldown);
+
+			energy = Mathf.Clamp01(energy - phantomEnergyUse);
+			panel.SetEnergy(energy);
 
 			SoundManager.I.PlaySound("painr", transform);
 		}

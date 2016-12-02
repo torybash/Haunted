@@ -39,7 +39,7 @@ public class Game : MonoBehaviour {
 			var input = new InputData{type = InputType.Keyboard, idx = 0, team = Team.Ghosts};
 			CreateCharacter(input);
 
-			var input2 = new InputData{type = InputType.Keyboard, idx = 1, team = Team.Survivors};
+			var input2 = new InputData{type = InputType.Joystick, idx = 1, team = Team.Survivors};
 			CreateCharacter(input2);
 		}
 

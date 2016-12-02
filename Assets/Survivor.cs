@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Linq;
 using System.Collections;
 
 [RequireComponent(typeof(Animator))]
@@ -12,13 +13,17 @@ public class Survivor : MonoBehaviour {
 	[SerializeField] private float focusLightAngle = 32.5f;
 	[SerializeField] private float flashlightFocusSpeed = 8f;
 	[SerializeField] private float dashDuration = 0.4f;
-	[SerializeField] private float dashCooldown = 5f;
+//	[SerializeField] private float dashCooldown = 5f;
+	[SerializeField] private float flashlightEnergyUse = 0.05f;
+	[SerializeField] private float batteryEnergyAmount = 0.5f;
+	[SerializeField] private float torchActivateRadius = 2.5f;
 
 	[SerializeField] private ParticleSystem dashParticles;
 	[SerializeField] private Light flashlightLight;
 
 	[SerializeField] private GameObject keyInHand;
 
+	[SerializeField] private float energy;
 
 	private PlayerMovement movement {get{ return GetComponent<PlayerMovement>(); } }
 
@@ -31,6 +36,13 @@ public class Survivor : MonoBehaviour {
 
 	private float dashEndTime;
 	private float nextDashAllowedTime;
+
+	private bool flashlightOn = true;
+
+	private bool justUsedDash;
+	private bool justUsedToggle;
+	private bool justUsedActivate;
+
 
 	private Animator anim { get{ return GetComponent<Animator>(); } }
 
@@ -77,39 +89,65 @@ public class Survivor : MonoBehaviour {
 		holdingFocus = false;
 
 		if (input.type == InputType.Joystick){
-			if (Input.GetButton("Joy" + input.idx + "A")){
-				Debug.Log("player " + input.idx  + " pressed A!");
+			if (!justUsedActivate && Input.GetButton("Joy" + input.idx + "A")){
+				Debug.Log("player " + input.idx  + " GetButton A!");
+				Activate();
+				justUsedActivate = true;
+			}else{
+				justUsedActivate = false;
 			}
-			if (Input.GetButton("Joy" + input.idx + "X")){
-				Debug.Log("player " + input.idx  + " pressed X!");
-
+			if (!justUsedDash && Input.GetButton("Joy" + input.idx + "X")){
+//				Debug.Log("player " + input.idx  + " pressed X!");
 				Dash();
+				justUsedDash = true;
+			}else{
+				justUsedDash = false;
 			}
 			if (Input.GetButton("Joy" + input.idx + "B")){
-				Debug.Log("player " + input.idx  + " pressed B!");
-
+//				Debug.Log("player " + input.idx  + " pressed B!");
 				FocusFlashlight();
 			}
-			if (Input.GetButton("Joy" + input.idx + "Y")){
-				Debug.Log("player " + input.idx  + " pressed Y!");
+			if (!justUsedToggle && Input.GetButton("Joy" + input.idx + "Y")){
+				ToggleFlashlight();
+//				Debug.Log("player " + input.idx  + " pressed Y!");
+				justUsedToggle = true;
+			}else{
+				justUsedToggle = false;
 			}
 		}else if (input.type == InputType.Keyboard){
-			if (Input.GetButtonDown("A")){
-
+			if (Input.GetButton("A")){
+				Activate();
 			}
-			if (Input.GetButtonDown("X")){
+			if (Input.GetButton("X")){
 				Dash();
 			}
 			if (Input.GetButton("B")){
 				FocusFlashlight();
 			}
+			if (Input.GetButton("Y")){
+				ToggleFlashlight();
+			}
+		}
+
+
+		//Flashlight on
+		if (flashlightOn){
+			energy = Mathf.Clamp01(energy - flashlightEnergyUse * Time.deltaTime);
+
+			if (energy == 0){
+				ToggleFlashlight();
+			}
+			//			panel.UseEnergy();
 		}
 
 		//Flashlight focus
-		var goalFrac = holdingFocus ? 1 : 0;
-		currFocusFrac = Mathf.MoveTowards(currFocusFrac, goalFrac, flashlightFocusSpeed * Time.deltaTime);
-		flashlightLight.range = Mathf.Lerp(defaultLightRange, focusLightRange, currFocusFrac);
-		flashlightLight.spotAngle = Mathf.Lerp(defaultLightAngle, focusLightAngle, currFocusFrac);
+		if (flashlightOn){
+			var goalFrac = holdingFocus ? 1 : 0;
+			currFocusFrac = Mathf.MoveTowards(currFocusFrac, goalFrac, flashlightFocusSpeed * Time.deltaTime);
+			flashlightLight.range = Mathf.Lerp(defaultLightRange, focusLightRange, currFocusFrac);
+			flashlightLight.spotAngle = Mathf.Lerp(defaultLightAngle, focusLightAngle, currFocusFrac);
+		}
+
 
 		//Phantoming
 		if (Time.time > dashEndTime){
@@ -119,23 +157,44 @@ public class Survivor : MonoBehaviour {
 	}
 
 
+	private void Activate(){
+		var colliders = Physics.OverlapSphere(transform.position, torchActivateRadius, LayerMask.GetMask("Torches"));
+		foreach (var item in colliders) {
+			var torch = item.GetComponent<TorchLight>();
+			if (torch) if (!torch.turnedOn) torch.SetTurnedOn(true);
+		}
+	}
+
+	private void ToggleFlashlight(){
+		flashlightOn = !flashlightOn;
+		flashlightLight.enabled = flashlightOn;
+		if (flashlightOn){
+			flashlightLight.range = defaultLightRange;
+			flashlightLight.spotAngle = defaultLightAngle;
+		}
+	}
+
 	private void FocusFlashlight(){
 		holdingFocus = true;
 	}
 
 	private void Dash(){
 		if (Time.time > nextDashAllowedTime){
-			nextDashAllowedTime = Time.time + dashCooldown;
+//			nextDashAllowedTime = Time.time + dashCooldown;
 
 			dashEndTime = Time.time + dashDuration;
 			movement.EnableDash(true);
 			dashParticles.Play();
 
-			panel.UseSkill(0, dashCooldown);
+//			panel.UseSkill(0, dashCooldown);
 		}
 	}
 
 
+
+	private void PickupBattery(){
+		energy = Mathf.Clamp01(energy + batteryEnergyAmount);
+	}
 
 
 
@@ -146,6 +205,10 @@ public class Survivor : MonoBehaviour {
 			other.gameObject.SetActive(false);
 
 			SoundManager.I.PlaySound("metalLatch", transform);
+		}else if (other.tag == "Battery"){
+			PickupBattery();
+
+
 		}else if (other.tag == "Door" && carryItem == ItemType.Key){
 			other.GetComponent<ExitDoor>().Open();
 

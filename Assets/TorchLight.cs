@@ -1,19 +1,41 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(Light))]
+//[RequireComponent(typeof(Light))]
 public class TorchLight : MonoBehaviour {
 
 
-	private Light lght {get{ return GetComponent<Light>(); } }
+
+	[SerializeField] Light lght;
 
 	[SerializeField] private float strength;
 	[SerializeField] private float variability;
 	[SerializeField] private float speed;
 
-	void Update () {
-		var newIntense = strength + Random.Range(-variability, variability);
+	[SerializeField] private float onIntensity;
+	[SerializeField] private float offIntensity;
 
-		lght.intensity	= Mathf.MoveTowards(lght.intensity, newIntense, speed) ;	
+	[SerializeField] private bool startTurnedOn = true;
+
+	public bool turnedOn {get; private set;}
+
+
+	void Start(){
+		SetTurnedOn(startTurnedOn);
 	}
+
+	void Update () {
+		if (turnedOn){
+			var newIntense = strength + Random.Range(-variability, variability);
+			lght.intensity	= Mathf.MoveTowards(lght.intensity, newIntense, speed) ;	
+		}
+	}
+
+
+	public void SetTurnedOn(bool on){
+		turnedOn = on;
+		lght.intensity = on ? onIntensity : offIntensity;
+	}
+
+
 }
