@@ -1,0 +1,1179 @@
+fileFormatVersion: 2
+guid: 0c9fa6a79bdd2428db9acec22c361754
+timeCreated: 1480670345
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: elerya-spells_0
+    21300002: elerya-spells_1
+    21300004: elerya-spells_2
+    21300006: elerya-spells_3
+    21300008: elerya-spells_4
+    21300010: elerya-spells_5
+    21300012: elerya-spells_6
+    21300014: elerya-spells_7
+    21300016: elerya-spells_8
+    21300018: elerya-spells_9
+    21300020: elerya-spells_10
+    21300022: elerya-spells_11
+    21300024: elerya-spells_12
+    21300026: elerya-spells_13
+    21300028: elerya-spells_14
+    21300030: elerya-spells_15
+    21300032: elerya-spells_16
+    21300034: elerya-spells_17
+    21300036: elerya-spells_18
+    21300038: elerya-spells_19
+    21300040: elerya-spells_20
+    21300042: elerya-spells_21
+    21300044: elerya-spells_22
+    21300046: elerya-spells_23
+    21300048: elerya-spells_24
+    21300050: elerya-spells_25
+    21300052: elerya-spells_26
+    21300054: elerya-spells_27
+    21300056: elerya-spells_28
+    21300058: elerya-spells_29
+    21300060: elerya-spells_30
+    21300062: elerya-spells_31
+    21300064: elerya-spells_32
+    21300066: elerya-spells_33
+    21300068: elerya-spells_34
+    21300070: elerya-spells_35
+    21300072: elerya-spells_36
+    21300074: elerya-spells_37
+    21300076: elerya-spells_38
+    21300078: elerya-spells_39
+    21300080: elerya-spells_40
+    21300082: elerya-spells_41
+    21300084: elerya-spells_42
+    21300086: elerya-spells_43
+    21300088: elerya-spells_44
+    21300090: elerya-spells_45
+    21300092: elerya-spells_46
+    21300094: elerya-spells_47
+    21300096: elerya-spells_48
+    21300098: elerya-spells_49
+    21300100: elerya-spells_50
+    21300102: elerya-spells_51
+    21300104: elerya-spells_52
+    21300106: elerya-spells_53
+    21300108: elerya-spells_54
+    21300110: elerya-spells_55
+    21300112: elerya-spells_56
+    21300114: elerya-spells_57
+    21300116: elerya-spells_58
+    21300118: elerya-spells_59
+    21300120: elerya-spells_60
+    21300122: elerya-spells_61
+    21300124: elerya-spells_62
+    21300126: elerya-spells_63
+    21300128: elerya-spells_64
+    21300130: elerya-spells_65
+    21300132: elerya-spells_66
+    21300134: elerya-spells_67
+    21300136: elerya-spells_68
+    21300138: elerya-spells_69
+    21300140: elerya-spells_70
+    21300142: elerya-spells_71
+    21300144: elerya-spells_72
+    21300146: elerya-spells_73
+    21300148: elerya-spells_74
+    21300150: elerya-spells_75
+    21300152: elerya-spells_76
+    21300154: elerya-spells_77
+    21300156: elerya-spells_78
+    21300158: elerya-spells_79
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: elerya-spells_0
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 381
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_1
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 381
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_2
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 381
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_3
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 381
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_4
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 381
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_5
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 381
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_6
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 381
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_7
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 381
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_8
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 341
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_9
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 341
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_10
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 341
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_11
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 341
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_12
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 341
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_13
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 341
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_14
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 341
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_15
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 341
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_16
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 301
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_17
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 301
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_18
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 301
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_19
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 301
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_20
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 301
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_21
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 301
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_22
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 301
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_23
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 301
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_24
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 261
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_25
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 261
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_26
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 261
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_27
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 261
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_28
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 261
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_29
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 261
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_30
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 261
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_31
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 261
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_32
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 221
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_33
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 221
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_34
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 221
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_35
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 221
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_36
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 221
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_37
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 221
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_38
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 221
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_39
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 221
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_40
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 181
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_41
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 181
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_42
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 181
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_43
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 181
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_44
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 181
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_45
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 181
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_46
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 181
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_47
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 181
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_48
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 141
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_49
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 141
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_50
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 141
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_51
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 141
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_52
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 141
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_53
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 141
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_54
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 141
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_55
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 141
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_56
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 101
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_57
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 101
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_58
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 101
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_59
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 101
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_60
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 101
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_61
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 101
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_62
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 101
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_63
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 101
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_64
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 61
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_65
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 61
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_66
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 61
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_67
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 61
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_68
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 61
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_69
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 61
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_70
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 61
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_71
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 61
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_72
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 21
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_73
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 21
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_74
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 21
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_75
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 21
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_76
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 21
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_77
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 21
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_78
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 21
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: elerya-spells_79
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 21
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
