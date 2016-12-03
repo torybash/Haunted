@@ -36,7 +36,7 @@ public class MenuController : MonoBehaviour {
 		mainPanel.SetEnabled(true);
 		inputSelectPanel.SetEnabled(false);
 
-		SoundManager.I.PlaySound("Ambience_Hell_00", null, true);
+		SoundManager.I.PlaySound("forest", null, true);
 	}
 
 
@@ -134,6 +134,7 @@ public class MenuController : MonoBehaviour {
 			countdownText.text = "Starting in " + count + "...";
 			yield return new WaitForSeconds(countdownDuration);
 			count--;
+//			SoundManager.I.PlaySound("Bonecrack_01", null);
 		}
 
 		if (!devices.All(x => (x.isReady || x.input.team == Team.Center))){

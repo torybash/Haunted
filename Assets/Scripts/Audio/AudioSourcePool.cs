@@ -11,6 +11,7 @@ public class AudioSourcePool {
 	public AudioSourcePool(int size){
 		sources = new Queue<AudioSource>(size);
 		audioSourcePool = new GameObject("_AudioSourcePool").transform;
+		GameObject.DontDestroyOnLoad(audioSourcePool);
 		for (int i = 0; i < size; i++) {
 			var sourceContainer = new GameObject("_AudioSource_" + i);
 			sourceContainer.transform.SetParent(audioSourcePool);

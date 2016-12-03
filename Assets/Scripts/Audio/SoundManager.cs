@@ -16,6 +16,10 @@ public class SoundManager : MonoBehaviour {
 
 
 	void Awake(){
+		if (I != null) {
+			Destroy(gameObject);
+			return;
+		}
 		I = this;
 
 		audioSourcePool = new AudioSourcePool(64);
@@ -23,6 +27,8 @@ public class SoundManager : MonoBehaviour {
 		foreach (var snd in soundLib.sounds) {
 			soundDict.Add(snd.name, snd);
 		}
+
+		DontDestroyOnLoad(gameObject);
 	}
 
 	public AudioSource PlaySound(string sndName, Transform parent, bool loop = false){
