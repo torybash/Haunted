@@ -131,7 +131,7 @@ public class Ghost : MonoBehaviour {
 			}
 		}
 		var activatableTorches = GetNearActivatableTorches(torchActivateRadius);
-		aButtonImg.gameObject.SetActive(torches.Count > 0);
+		aButtonImg.gameObject.SetActive(activatableTorches.Count > 0);
 
 
 		//Energy recharge

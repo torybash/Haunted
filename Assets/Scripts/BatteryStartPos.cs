@@ -4,7 +4,7 @@ using System.Collections;
 public class BatteryStartPos : MonoBehaviour {
 
 	void OnDrawGizmos() {
-		Gizmos.color = Color.yellow;
+		Gizmos.color = Color.green;
 		Gizmos.DrawSphere(transform.position, 0.5f);
 	}
 }
