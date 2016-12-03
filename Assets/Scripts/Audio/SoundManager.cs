@@ -17,9 +17,7 @@ public class SoundManager : MonoBehaviour {
 
 	void Awake(){
 		I = this;
-	}
 
-	void Start(){
 		audioSourcePool = new AudioSourcePool(64);
 
 		foreach (var snd in soundLib.sounds) {
@@ -27,30 +25,39 @@ public class SoundManager : MonoBehaviour {
 		}
 	}
 
-
-	public void PlaySound(string sndName, Transform parent){
+	public AudioSource PlaySound(string sndName, Transform parent, bool loop = false){
 		var source = audioSourcePool.Get();
 		var clip = soundDict[sndName];
 
 		if (source != null && clip != null){
-			source.transform.SetParent(parent);
+			if (parent) source.transform.SetParent(parent);
 			source.transform.localPosition = Vector3.zero;
 
+			source.loop = loop;
 			source.clip = clip;
 			source.Play();
 
 			StartCoroutine(AudioSourceReturnCR(source));
+
+			return source;
 		}
+
+		return null;
 	}
 
 
 	private IEnumerator AudioSourceReturnCR(AudioSource source){
-		yield return new WaitForSeconds(source.clip.length + audioSourceExtraTime);
+//		yield return new WaitForSeconds(source.clip.length + audioSourceExtraTime);
 
-		if (source.isPlaying){
-			Debug.LogError("AudioSourceReturnCR ERROR - audioSource is still playing! - source.time: " +source.time + ", source.clip: " + source.clip.length);
-			yield break;
+
+		while (source.isPlaying){
+			yield return null;
 		}
+
+//		if (source.isPlaying){
+//			Debug.LogError("AudioSourceReturnCR ERROR - audioSource is still playing! - source.time: " +source.time + ", source.clip: " + source.clip.length);
+//			yield break;
+//		}
 
 		audioSourcePool.Return(source);
 	}

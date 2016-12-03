@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Linq;
 using System.Collections;
+using System;
 
 [RequireComponent(typeof(Animator))]
 public class Survivor : MonoBehaviour {
@@ -13,10 +14,13 @@ public class Survivor : MonoBehaviour {
 	[SerializeField] private float focusLightAngle = 32.5f;
 	[SerializeField] private float flashlightFocusSpeed = 8f;
 	[SerializeField] private float dashDuration = 0.4f;
+	[SerializeField] private float dashEnergyUse = 0.28f;
 //	[SerializeField] private float dashCooldown = 5f;
-	[SerializeField] private float flashlightEnergyUse = 0.05f;
+	[SerializeField] private float flashlightEnergyUse = 0.25f;
 	[SerializeField] private float batteryEnergyAmount = 0.5f;
 	[SerializeField] private float torchActivateRadius = 2.5f;
+	[SerializeField] private float trapSlowDuration = 2.2f;
+	[SerializeField] private float trapSlowFrac = 0.75f;
 
 	[SerializeField] private ParticleSystem dashParticles;
 	[SerializeField] private Light flashlightLight;
@@ -35,13 +39,19 @@ public class Survivor : MonoBehaviour {
 	private float currFocusFrac;
 
 	private float dashEndTime;
-	private float nextDashAllowedTime;
+//	private float nextDashAllowedTime;
+
+	private float trapSlowedEndTime;
+
 
 	private bool flashlightOn = true;
 
 	private bool justUsedDash;
 	private bool justUsedToggle;
 	private bool justUsedActivate;
+
+
+	public bool dead;
 
 
 	private Animator anim { get{ return GetComponent<Animator>(); } }
@@ -66,6 +76,8 @@ public class Survivor : MonoBehaviour {
 	}
 
 	void Update () {
+		if (dead) return;
+
 		//Flashlight detection
 		foreach (var ghost in Game.I.Ghosts) {
 			RaycastHit hit;
@@ -79,9 +91,11 @@ public class Survivor : MonoBehaviour {
 
 			if (Vector3.Angle(dir, transform.forward) > flashlightLight.spotAngle / 2f) continue;
 
+			panel.SetSpooked(false);
 			if (Physics.Raycast(flashlightEnd.position, dir, out hit, flashlightLight.range)){
 				if (hit.collider.GetComponent<Ghost>() != null){
 					hit.collider.GetComponent<Ghost>().HitByLight();
+					panel.SetSpooked(true);
 				}
 			}
 		}
@@ -89,17 +103,21 @@ public class Survivor : MonoBehaviour {
 		holdingFocus = false;
 
 		if (input.type == InputType.Joystick){
-			if (!justUsedActivate && Input.GetButton("Joy" + input.idx + "A")){
+			if (Input.GetButton("Joy" + input.idx + "A")){
 				Debug.Log("player " + input.idx  + " GetButton A!");
-				Activate();
-				justUsedActivate = true;
+				if (!justUsedActivate){
+					Activate();
+					justUsedActivate = true;
+				}
 			}else{
 				justUsedActivate = false;
 			}
-			if (!justUsedDash && Input.GetButton("Joy" + input.idx + "X")){
+			if (Input.GetButton("Joy" + input.idx + "X")){
 //				Debug.Log("player " + input.idx  + " pressed X!");
-				Dash();
-				justUsedDash = true;
+				if (!justUsedDash){
+					Dash();
+					justUsedDash = true;
+				}
 			}else{
 				justUsedDash = false;
 			}
@@ -107,34 +125,45 @@ public class Survivor : MonoBehaviour {
 //				Debug.Log("player " + input.idx  + " pressed B!");
 				FocusFlashlight();
 			}
-			if (!justUsedToggle && Input.GetButton("Joy" + input.idx + "Y")){
-				ToggleFlashlight();
+			if (Input.GetButton("Joy" + input.idx + "Y")){
 //				Debug.Log("player " + input.idx  + " pressed Y!");
-				justUsedToggle = true;
+				if (!justUsedToggle){
+					justUsedToggle = true;
+					ToggleFlashlight();
+				}
+
 			}else{
 				justUsedToggle = false;
 			}
 		}else if (input.type == InputType.Keyboard){
-			if (Input.GetButton("A")){
+			if (Input.GetButtonDown("A")){
 				Activate();
 			}
-			if (Input.GetButton("X")){
+			if (Input.GetButtonDown("X")){
 				Dash();
 			}
 			if (Input.GetButton("B")){
 				FocusFlashlight();
 			}
-			if (Input.GetButton("Y")){
+			if (Input.GetButtonDown("Y")){
 				ToggleFlashlight();
 			}
+		}
+
+
+		//Trap slow
+		if (Time.time < trapSlowedEndTime){
+			GetComponent<PlayerMovement>().slowdownFrac = trapSlowFrac;
+		}else{
+			GetComponent<PlayerMovement>().slowdownFrac = 0;
 		}
 
 
 		//Flashlight on
 		if (flashlightOn){
 			energy = Mathf.Clamp01(energy - flashlightEnergyUse * Time.deltaTime);
-
-			if (energy == 0){
+			panel.SetEnergy(energy);
+			if (energy == 0 && flashlightOn){
 				ToggleFlashlight();
 			}
 			//			panel.UseEnergy();
@@ -154,6 +183,8 @@ public class Survivor : MonoBehaviour {
 			dashParticles.Stop();
 			movement.EnableDash(false);
 		}
+
+
 	}
 
 
@@ -179,8 +210,12 @@ public class Survivor : MonoBehaviour {
 	}
 
 	private void Dash(){
-		if (Time.time > nextDashAllowedTime){
+		if (energy > dashEnergyUse){
+		//		if (Time.time > nextDashAllowedTime){
 //			nextDashAllowedTime = Time.time + dashCooldown;
+
+			energy = Mathf.Clamp01(energy - dashEnergyUse);
+			panel.SetEnergy(energy);
 
 			dashEndTime = Time.time + dashDuration;
 			movement.EnableDash(true);
@@ -195,11 +230,11 @@ public class Survivor : MonoBehaviour {
 	private void PickupBattery(){
 		energy = Mathf.Clamp01(energy + batteryEnergyAmount);
 	}
-
-
-
+		
 
 	void OnTriggerEnter(Collider other){
+		if (dead) return;
+
 		if (other.tag == "Key" && carryItem == ItemType.None){
 			carryItem = ItemType.Key;
 			other.gameObject.SetActive(false);
@@ -207,18 +242,44 @@ public class Survivor : MonoBehaviour {
 			SoundManager.I.PlaySound("metalLatch", transform);
 		}else if (other.tag == "Battery"){
 			PickupBattery();
-
+			Destroy(other.gameObject);
+			SoundManager.I.PlaySound("bookPlace1", transform);
 
 		}else if (other.tag == "Door" && carryItem == ItemType.Key){
 			other.GetComponent<ExitDoor>().Open();
+			carryItem = ItemType.None;
 
+			Game.I.SurvivorsWin();
 
+		}else if (other.tag == "Trap"){
+			bool steppedOn = other.GetComponent<GhostTrap>().SteppedOn();
+
+			if (steppedOn){
+				trapSlowedEndTime = Time.time + trapSlowDuration;
+
+				SoundManager.I.PlaySound("creak1", transform);
+			}
 		}
 	}
 
 	void OnCollisionEnter(Collision coll){
 		if (coll.collider.tag == "Ghost"){
 			Debug.Log("SURVIVOR DIE!!");
+			anim.Play("Die");
+
+			dead =  true;
+
+			if (flashlightOn){
+				ToggleFlashlight();
+			}
+
+			panel.SetDead(true);
+
+
+			SoundManager.I.PlaySound("creak1", transform);
+
+			GetComponent<PlayerMovement>().enabled = false;
+			GetComponent<Rigidbody>().isKinematic = true;
 		}
 	}
 }
