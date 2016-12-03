@@ -17,6 +17,8 @@ public class Ghost : MonoBehaviour {
 	[SerializeField] private float phantomEnergyUse = 0.45f;
 	[SerializeField] private float energyRechargeSpeed = 0.1f; //energy pr sec
 	[SerializeField] private float torchActivateRadius = 2.5f;
+	[SerializeField] private float torchLightRadius = 5.0f;
+	[SerializeField] private float torchLightSlowdown = 0.5f;
 
 	[SerializeField] private ParticleSystem phantomingParticles;
 
@@ -44,6 +46,8 @@ public class Ghost : MonoBehaviour {
 	private bool justUsedPhantom;
 	private bool justUsedActivate;
 
+//	private AudioSource hideAudio;
+
 	private Animator anim { get{ return GetComponent<Animator>(); } }
 
 
@@ -53,7 +57,7 @@ public class Ghost : MonoBehaviour {
 	}
 
 	void Update(){
-		holdingHide = false;
+		
 
 		if (input.type == InputType.Joystick){
 			if (Input.GetButton("Joy" + input.idx + "A")){
@@ -78,6 +82,9 @@ public class Ghost : MonoBehaviour {
 				Debug.Log("player " + input.idx  + " pressed B!");
 
 				Hiding();
+			}else{
+				holdingHide = false;
+//				if (hideAudio != null && hideAudio.isPlaying) hideAudio.Stop();
 			}
 			if (Input.GetButton("Joy" + input.idx + "Y")){
 				Debug.Log("player " + input.idx  + " pressed Y!");
@@ -97,9 +104,21 @@ public class Ghost : MonoBehaviour {
 			}
 			if (Input.GetButton("B")){
 				Hiding();
+			}else{
+				holdingHide = false;
 			}
 			if (Input.GetButtonDown("Y")){
 				PlaceTrap();
+			}
+		}
+
+
+		//Close to torch
+		var colliders = Physics.OverlapSphere(transform.position + Vector3.up * 1.5f, torchLightRadius, LayerMask.GetMask("Torches"));
+		foreach (var item in colliders) {
+			var torch = item.GetComponent<TorchLight>();
+			if (torch.turnedOn) {
+				lighted = Mathf.Max(lighted, torchLightSlowdown);
 			}
 		}
 
@@ -138,7 +157,7 @@ public class Ghost : MonoBehaviour {
 		lighted += Time.deltaTime * ligthIncreaseSpeed;
 
 		if (lighted > 1){
-			Debug.Log("EXPLODE!");
+			Debug.Log("EXPLODE!?");
 		}
 	}
 
@@ -151,7 +170,10 @@ public class Ghost : MonoBehaviour {
 	}
 
 	private void Hiding(){
+		if (holdingHide) return;
 		holdingHide = true;
+
+//		hideAudio = SoundManager.I.PlaySound("Ambience_MonstersBelly_00", null, true);
 	}
 
 	private void PlaceTrap(){
@@ -161,6 +183,8 @@ public class Ghost : MonoBehaviour {
 
 			var trap = Instantiate(trapPrefab);
 			trap.transform.position = transform.position; //TODO set y correctly?
+
+			trap.Init();
 		}
 	}
 
@@ -178,7 +202,7 @@ public class Ghost : MonoBehaviour {
 			energy = Mathf.Clamp01(energy - phantomEnergyUse);
 			panel.SetEnergy(energy);
 
-			SoundManager.I.PlaySound("painr", transform);
+			SoundManager.I.PlaySound("grunt2", transform);
 		}
 	}
 }

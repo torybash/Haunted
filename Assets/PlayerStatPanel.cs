@@ -20,6 +20,8 @@ public class PlayerStatPanel : MonoBehaviour {
 
 	[Header("Values")]
 	[SerializeField] Sprite survSprite;
+	[SerializeField] Sprite survDeadSprite;
+	[SerializeField] Sprite survSpookedSprite;
 //	[SerializeField] List<Sprite> survSkillSprites;
 //
 	[SerializeField] Sprite ghostSprite;
@@ -60,19 +62,19 @@ public class PlayerStatPanel : MonoBehaviour {
 
 	public void SetEnergy(float newAmount){
 		energyBarFill.fillAmount = newAmount;
-		//		skills[idx].UseSkill(cooldown);
+		energyBarFill.color = Color.Lerp(emptyColor, fullColor, energyBarFill.fillAmount);
 	}
-
-	public void UseSkill(int idx, float cooldown){
-//		skills[idx].UseSkill(cooldown);
-	}
-
-	public void Hurt(){
-		//TODO
-	}
-
-
+		
 	public void SetAlpha(float alpha){
 		GetComponent<CanvasGroup>().alpha = alpha;
+	}
+
+	public void SetDead(bool dead){
+		
+		portraitImg.sprite = dead ? survDeadSprite : survSprite;
+	}
+
+	public void SetSpooked(bool spooked){
+		portraitImg.sprite = spooked ? survSpookedSprite : survSprite;
 	}
 }

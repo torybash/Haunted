@@ -19,7 +19,7 @@ public class InputDevice : MonoBehaviour {
 
 	private MenuController menu {get;set;}
 
-
+	private bool justClickedStart;
 
 	private bool justMoved;
 
@@ -31,7 +31,6 @@ public class InputDevice : MonoBehaviour {
 		input.team = Team.Center;
 //		if (type == InputType.Joystick) 
 		joyStickNrText.text = ""+(idx+1);
-
 		SetReady(false);
 	}
 
@@ -42,15 +41,20 @@ public class InputDevice : MonoBehaviour {
 			move = Input.GetAxis("Horizontal");
 			if (Mathf.Abs(move) > 0) MoveDir(move > 0 ? 1 : -1);
 
-			if (Input.GetButton("Submit") && input.team != Team.Center){
-				SetReady(true);
+			if (Input.GetButtonDown("Submit") && input.team != Team.Center){
+				SetReady(!isReady);
 			}
 		}else if (input.type == InputType.Joystick){
 			move = Input.GetAxis("Joy" + input.idx + "LeftStickX");
 			if (Mathf.Abs(move) > 0) MoveDir(move > 0 ? 1 : -1);
 
-			if (Input.GetButton("Joy" + input.idx + "Start") && input.team != Team.Center){
-				SetReady(true);
+			if (Input.GetButton("Joy" + input.idx + "Start")){
+				if (!justClickedStart && input.team != Team.Center) {
+					SetReady(!isReady);
+				}
+				justClickedStart = true;
+			}else{
+				justClickedStart = false;
 			}
 		}
 
@@ -59,19 +63,25 @@ public class InputDevice : MonoBehaviour {
 	}
 
 	private void MoveDir(int dir){ 		// -1=left : 1=rigth 
-		if (justMoved) return;
+		if (justMoved || isReady) return;
 
 		int newPos = (int) input.team + dir;
 		newPos = Mathf.Clamp(newPos, 0, (int) Team.Ghosts);
 
+		var oldTeam = input.team;
 		input.team = (Team) newPos;
-		menu.MoveDevice(this, input.team);
+		if (input.team != oldTeam) menu.MoveDevice(this, input.team);
 
 		justMoved = true;
 	}
 
 	private void SetReady(bool ready){
+		if (isReady) SoundManager.I.PlaySound("Bonecrack_01", null);
+//		else SoundManager.I.PlaySound("Bonecrack_02", null);
+
 		isReady = ready;
+
+		GetComponent<Image>().color = isReady ? readyColor : Color.white;
 	}
 }
 
